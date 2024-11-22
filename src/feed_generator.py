@@ -3,30 +3,28 @@ import logging
 
 from rfeed import Feed
 
-from src.git_commits import get_all_commits
 from src.utils import create_feed_item
 
 
 logger = logging.getLogger()
 
 
-def create_feed_items(REPO_REF):
+def create_feed_items(repo_ref, commits):
     """
     Create an RSS feed from GitHub commits.
     """
-    commits = get_all_commits(REPO_REF)
 
     items = []
 
     for commit in commits:
-        title = f"Commit by {commit['user']}"
-        link = f"https://github.com/{REPO_REF}/commit/{commit['patches'][0]}"
+        title = commit['message']
+        link = f"https://github.com/{repo_ref}/commit/{commit['patches'][0]}"
         description = (
-            f"Commit message: {commit['message']}\nPatches: {commit['patches']}"
+            f"Diff: {commit['message']}\nPatches: {commit['patches']}"
         )
         author = commit["user"]
-        guid = f"https://github.com/{REPO_REF}/commit/{commit['patches'][0]}"
-        pubDate = datetime.datetime.now()  # or use commit['date'] if available
+        guid = f"https://github.com/{repo_ref}/commit/{commit['patches'][0]}"
+        pubDate = datetime.datetime.now()
 
         item = create_feed_item(title, link, description, author, guid, pubDate)
         items.append(item)
@@ -34,16 +32,16 @@ def create_feed_items(REPO_REF):
     return items
 
 
-def create_feed(REPO_REF):
+def create_feed(repo_ref, commits):
     """
     Create an RSS feed from GitHub commits.
     """
-    items = create_feed_items(REPO_REF)
+    items = create_feed_items(repo_ref, commits)
 
     feed = Feed(
-        title=f"GitHub Commits Feed for {REPO_REF}",
-        link=f"https://github.com/{REPO_REF}",
-        description=f"Latest commits for {REPO_REF}",
+        title=f"GitHub Commits Feed for {repo_ref}",
+        link=f"https://github.com/{repo_ref}",
+        description=f"Latest commits for {repo_ref}",
         language="en-US",
         lastBuildDate=datetime.datetime.now(),
         items=items,
