@@ -40,5 +40,5 @@ def main():
 
 
 if __name__ == "__main__":
-    logger.info("Starting Flask server...")
+    logger.info("Starting diff2rss...")
     main()
