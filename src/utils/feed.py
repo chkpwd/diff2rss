@@ -1,6 +1,6 @@
 from rfeed import Item, Guid
 
-def create_feed_item(title, link, description, author, guid, pubDate, patch=None):
+def create_feed_item(title, link, description, author, guid, pubDate):
     """
     Helper function for structuring commit data into an RSS-friendly format.
     """
