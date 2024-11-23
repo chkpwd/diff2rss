@@ -1,5 +1,6 @@
 import datetime
 
+
 def convert_to_utc_time(date):
     """Returns the parsed date in UTC."""
     try:

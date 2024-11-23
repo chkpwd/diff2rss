@@ -1,6 +1,6 @@
-import fastfeedparser
 import logging
 
+import fastfeedparser
 from flask import request
 
 logger = logging.getLogger(__name__)
