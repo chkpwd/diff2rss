@@ -15,14 +15,73 @@ like Feedly or InoReader.
 
 ## Installation
 
+### Docker
 You can easily get started by pulling the latest image from GitHub Container Registry (GHCR):
 
-```bash
-docker pull chkpwd/diff2rss:latest
+```
+docker pull chkpwd/diff2rss:latest &&
+docker run -d \
+  --name diff2rss \
+  -p 8000:8000 \
+  chkpwd/diff2rss:latest
 ```
 
 Once you have the container installed, you're ready to go!
 
+### Kubernetes
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: diff2rss
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: diff2rss
+  template:
+    metadata:
+      labels:
+        app: diff2rss
+    spec:
+      containers:
+      - name: diff2rss
+        image: ghcr.io/chkpwd/diff2rss:latest
+        ports:
+        - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: diff2rss-service
+spec:
+  selector:
+    app: diff2rss
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+  type: ClusterIP  # This keeps the service internal, the Ingress will expose it externally
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: diff2rss-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: diff2rss.yourdomain.com  # Replace with your desired domain name
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: diff2rss-service
+            port:
+              number: 8000
+```
 ## Usage
 
 ### Add to your favorite RSS Reader
