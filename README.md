@@ -1,7 +1,3 @@
-## Diff2RSS
-A Python script that converts GitHub Commits Atom into Diffs and generates an
-RSS feed for each commit showing the diff.
-
 ## Overview
 
 Transform GitHub commits Atom feed into a format that highlights the actual code
