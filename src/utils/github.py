@@ -15,6 +15,3 @@ def get_entry_diff(entry):
     diff = response.text
 
     return diff
-
-
-
