@@ -18,6 +18,7 @@ RUN pip install "poetry==$POETRY_VERSION"
 COPY poetry.lock pyproject.toml ./
 
 RUN poetry config virtualenvs.in-project true && \
+    poetry lock --no-update && \
     poetry install --only=main
 
 FROM base AS final
