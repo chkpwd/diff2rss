@@ -1,6 +1,7 @@
 import logging
 
-from flask import Flask, Response
+from fastapi import FastAPI
+from fastapi.responses import Response
 
 from src.feed_generator import create_feed
 from src.utils.parsing import parse_atom_feed, parse_feed_uri
@@ -10,27 +11,20 @@ logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 
-app = Flask(__name__)
+app = FastAPI(title="GitHub Feed Generator")
 
 
-@app.route("/generate_rss", methods=["GET"])
-def generate_rss():
-    feed_url = parse_feed_uri()
+@app.get("/generate_rss")
+async def generate_rss(source: str, branch: str = "main"):
+    feed_url = parse_feed_uri(source, branch)
 
     atom_feed = parse_atom_feed(feed_url)
 
     try:
         rss_feed = create_feed(atom_feed)
-        return Response(rss_feed, content_type="application/rss+xml")
+        return Response(rss_feed, media_type="application/rss+xml")
     except Exception as e:
-        logger.error(f"Error generating RSS feed: {str(e)}", exc_info=True, stack_info=True)
+        logger.error(
+            f"Error generating RSS feed: {str(e)}", exc_info=True, stack_info=True
+        )
         return f"Error: {str(e)}", 500
-
-
-def main():
-    app.run(debug=True)
-
-
-if __name__ == "__main__":
-    logger.info("Starting diff2rss...")
-    main()

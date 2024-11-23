@@ -1,38 +1,25 @@
 import logging
 
 import fastfeedparser
-from flask import request
 
 logger = logging.getLogger(__name__)
 
-def parse_feed_uri():
+
+def parse_feed_uri(source, branch):
     feed_url = ""
+    base_url = f"https://github.com/{source}"
 
-    repo_ref = request.args.get("source")
-    content = request.args.get("content")
-    branch = request.args.get("branch")
-
-    base_url = f"https://github.com/{repo_ref}"
-
-    if not repo_ref:
+    if not source:
         logger.error("Missing 'source' parameter.")
         return (
             "Error: Please provide a valid GitHub repository reference and token as query parameters.",
             400,
         )
 
-    if not content:
-        logger.error("Missing 'content' parameter.")
-        content = "commits"
-        return (
-            "Warning: Missing 'content' parameter. Defaulting to 'commits'.",
-            400,
-        )
-
     if branch:
-        feed_url = f"{base_url}/{content}/{branch}.atom"
+        feed_url = f"{base_url}/commits/{branch}.atom"
     else:
-        feed_url = f"{base_url}/{content}/main.atom"
+        feed_url = f"{base_url}/commits.atom"
 
     return feed_url
 
