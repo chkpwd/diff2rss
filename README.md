@@ -88,14 +88,15 @@ spec:
 
 Open your preferred RSS reader and create a new subscription. The URL should be
 in the following format:
-``https://github.com/:owner/:repo/commits.atom``
+``https://diff2rss.domain.tld/generate_rss?source=owner/repo``
 
 Specifying the branch:
-``https://github.com/:owner/:repo/commits/:branch.atom``
+``https://diff2rss.domain.tld/generate_rss?source=owner/repo&branch``
 
 ### Manual Testing
 ```
-curl -s -X GET https://github.com/:owner/:repo/commits.atom
+curl -s -X GET https://diff2rss.domain.tld/generate_rss?source=owner/repo
+
 ```
 
 #### Response
