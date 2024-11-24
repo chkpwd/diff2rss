@@ -5,7 +5,7 @@ import fastfeedparser
 logger = logging.getLogger(__name__)
 
 
-def parse_feed_uri(source, branch):
+def parse_feed_uri(source, author, branch):
     feed_url = ""
     base_url = f"https://github.com/{source}"
 
@@ -20,6 +20,9 @@ def parse_feed_uri(source, branch):
         feed_url = f"{base_url}/commits/{branch}.atom"
     else:
         feed_url = f"{base_url}/commits.atom"
+
+    if author:
+        feed_url += f"?author={author}"
 
     return feed_url
 
