@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.2.0] - 2024-11-24
+### :sparkles: New Features
+- [`a326306`](https://github.com/chkpwd/diff2rss/commit/a326306cfe88282509d4e3e43978c82e4a66e34f) - add author param *(commit by [@chkpwd](https://github.com/chkpwd))*
+
+### :bug: Bug Fixes
+- [`56229aa`](https://github.com/chkpwd/diff2rss/commit/56229aa207a24d086b2d1c694fa4a6d23e9c01d5) - **readme**: incorrect URI *(commit by [@chkpwd](https://github.com/chkpwd))*
+
+
 ## [v1.1.0] - 2024-11-23
 ### :sparkles: New Features
 - [`44da9a8`](https://github.com/chkpwd/diff2rss/commit/44da9a8d90c1d2c45164df63a756954998f008bb) - added deps *(commit by [@chkpwd](https://github.com/chkpwd))*
@@ -22,3 +30,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [v1.0.0]: https://github.com/chkpwd/diff2rss/compare/v0.3.0...v1.0.0
 [v1.1.0]: https://github.com/chkpwd/diff2rss/compare/v1.0.0...v1.1.0
+[v1.2.0]: https://github.com/chkpwd/diff2rss/compare/v1.1.0...v1.2.0
