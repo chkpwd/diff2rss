@@ -91,7 +91,10 @@ in the following format:
 ``https://diff2rss.domain.tld/generate_rss?source=owner/repo``
 
 Specifying the branch:
-``https://diff2rss.domain.tld/generate_rss?source=owner/repo&branch``
+``https://diff2rss.domain.tld/generate_rss?source=owner/repo&branch=dev``
+
+Specifying an author:
+``https://diff2rss.domain.tld/generate_rss?source=owner/repo&author=owner``
 
 ### Manual Testing
 ```
