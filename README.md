@@ -98,8 +98,7 @@ Specifying an author:
 
 ### Manual Testing
 ```
-curl -s -X GET https://diff2rss.domain.tld/generate_rss?source=owner/repo
-
+curl -s -X GET https://diff2rss.domain.tld/generate_rss?source=owner/repo&branch=dev&author=renovate
 ```
 
 #### Response
