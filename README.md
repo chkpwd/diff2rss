@@ -1,8 +1,8 @@
 ## Overview
 
-Transform GitHub commits Atom feed into a format that highlights the actual code
+Transform GitHub commits into a format that highlights the actual code
 changes, allowing users to easily monitor updates in a traditional RSS reader
-like Feedly or InoReader.
+like Feedly or Miniflux.
 
 ## Functionality
 
