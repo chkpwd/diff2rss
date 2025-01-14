@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.2.1] - 2025-01-14
+### :bug: Bug Fixes
+- [`a33f850`](https://github.com/chkpwd/diff2rss/commit/a33f850b3f1c358c4a72a7e64d4d6d410c9dce69) - make author param optional *(commit by [@chkpwd](https://github.com/chkpwd))*
+
+### :wrench: Chores
+- [`aea5c6c`](https://github.com/chkpwd/diff2rss/commit/aea5c6c8e54032c94259bf3ad4da819e750c452a) - organize imports *(commit by [@chkpwd](https://github.com/chkpwd))*
+
+
 ## [v1.2.0] - 2024-11-24
 ### :sparkles: New Features
 - [`a326306`](https://github.com/chkpwd/diff2rss/commit/a326306cfe88282509d4e3e43978c82e4a66e34f) - add author param *(commit by [@chkpwd](https://github.com/chkpwd))*
@@ -31,3 +39,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.0.0]: https://github.com/chkpwd/diff2rss/compare/v0.3.0...v1.0.0
 [v1.1.0]: https://github.com/chkpwd/diff2rss/compare/v1.0.0...v1.1.0
 [v1.2.0]: https://github.com/chkpwd/diff2rss/compare/v1.1.0...v1.2.0
+[v1.2.1]: https://github.com/chkpwd/diff2rss/compare/v1.2.0...v1.2.1
