@@ -1,4 +1,4 @@
-from rfeed import Item, Guid
+from rfeed import Guid, Item
 
 
 def create_feed_item(title, link, description, author, guid, pubDate):
