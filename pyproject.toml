@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "diff2rss"
-version = "0.1.0"
+version = "1.2.1"
 description = "Convert commit history to RSS feeds"
 authors = ["Bryan Jones <unix.chkpwd@gmail.com>"]
 package-mode = false
