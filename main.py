@@ -15,7 +15,7 @@ app = FastAPI(title="GitHub Feed Generator")
 
 
 @app.get("/generate_rss")
-async def generate_rss(source: str, author: str, branch: str = "main"):
+async def generate_rss(source: str, author: str = "", branch: str = "main"):
     feed_url = parse_feed_uri(source, author, branch)
 
     atom_feed = parse_atom_feed(feed_url)
