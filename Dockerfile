@@ -33,4 +33,4 @@ COPY --from=builder /src/.venv ./.venv
 COPY src/ ./src/
 COPY main.py .
 
-ENTRYPOINT ["/src/.venv/bin/fastapi", "run", "./main.py", "--port", "8000"]
+ENTRYPOINT ["/src/.venv/bin/uvicorn", "main:app", "--reload"]
