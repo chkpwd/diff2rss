@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.0] - 2025-04-30
+### :sparkles: New Features
+- [`2e77d8b`](https://github.com/chkpwd/diff2rss/commit/2e77d8b70214c2da00cf165abb6cbcb9f859a770) - switch to feedgen for lib *(commit by [@chkpwd](https://github.com/chkpwd))*
+- [`1271e91`](https://github.com/chkpwd/diff2rss/commit/1271e910f6863276456b9f81367b5372f72fe149) - use github token now *(commit by [@chkpwd](https://github.com/chkpwd))*
+- [`d81b3cb`](https://github.com/chkpwd/diff2rss/commit/d81b3cb78a0744e6ecedb505b1982b41aa0bb81f) - set uvicorn as entrypoint *(commit by [@chkpwd](https://github.com/chkpwd))*
+
+### :wrench: Chores
+- [`7f6b45f`](https://github.com/chkpwd/diff2rss/commit/7f6b45f2a46d2d0677969e25f4ac1731677d38c6) - add launch.json *(commit by [@chkpwd](https://github.com/chkpwd))*
+- [`d2a20a4`](https://github.com/chkpwd/diff2rss/commit/d2a20a415664737209538bcef3a753c2f1cc8c0e) - deprecate packages *(commit by [@chkpwd](https://github.com/chkpwd))*
+
+
 ## [v1.2.1] - 2025-01-14
 ### :bug: Bug Fixes
 - [`a33f850`](https://github.com/chkpwd/diff2rss/commit/a33f850b3f1c358c4a72a7e64d4d6d410c9dce69) - make author param optional *(commit by [@chkpwd](https://github.com/chkpwd))*
@@ -40,3 +51,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.1.0]: https://github.com/chkpwd/diff2rss/compare/v1.0.0...v1.1.0
 [v1.2.0]: https://github.com/chkpwd/diff2rss/compare/v1.1.0...v1.2.0
 [v1.2.1]: https://github.com/chkpwd/diff2rss/compare/v1.2.0...v1.2.1
+[v2.0.0]: https://github.com/chkpwd/diff2rss/compare/v1.2.1...v2.0.0
