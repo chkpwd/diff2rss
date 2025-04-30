@@ -13,6 +13,8 @@ like Feedly or Miniflux.
 ## 📸 Shots
 ![alt text](metadata/image.png)
 
+> :note: A Github PAT is required to avoid rate limiting. Please set the **GITHUB_TOKEN** variable.
+
 ## Installation
 
 ### Docker
