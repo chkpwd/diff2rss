@@ -27,7 +27,9 @@ RUN adduser -u 1000 python
 
 USER python
 
-ENV DEBUG=false
+ENV DEBUG=false \
+    UVICORN_HOST="0.0.0.0" \
+    UVICORN_PORT="8000"
 
 COPY --from=builder /src/.venv ./.venv
 COPY src/ ./src/
