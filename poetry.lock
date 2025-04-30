@@ -289,6 +289,20 @@ parsedatetime = "*"
 python-dateutil = "*"
 
 [[package]]
+name = "feedgen"
+version = "1.0.0"
+description = "Feed Generator (ATOM, RSS, Podcasts)"
+optional = false
+python-versions = "*"
+files = [
+    {file = "feedgen-1.0.0.tar.gz", hash = "sha256:d9bd51c3b5e956a2a52998c3708c4d2c729f2fcc311188e1e5d3b9726393546a"},
+]
+
+[package.dependencies]
+lxml = "*"
+python-dateutil = "*"
+
+[[package]]
 name = "flask"
 version = "3.1.0"
 description = "A simple framework for building complex web applications."
@@ -1394,4 +1408,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "26fe1e190b4e2ab341f9dd65e2f5083e73836d4c48ca8cf9ecc80b7e3edad7b3"
+content-hash = "a65ba5c93e74c09e4dc2fcb3ee7f6d6ab839f0dc585619b8d25b13d805843076"

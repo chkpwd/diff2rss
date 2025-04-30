@@ -1,65 +1,43 @@
 import logging
 
-from rfeed import Feed
+import fastfeedparser
+from feedgen.feed import FeedGenerator
 
-from src.utils.feed import create_feed_item
 from src.utils.github import get_entry_diff
-from src.utils.time import convert_to_utc_time
 
 logger = logging.getLogger(__name__)
 
 
-def create_feed_items(atom_feed):
-    """
-    Create RSS feed items.
-    """
-    items = []
-
-    feed = atom_feed["feed"]
-    entries = atom_feed["entries"]
-
-    title = feed["title"]
-    link = feed["link"]
-    id = feed["id"]
-
-    for entry in entries:
-        try:
-            title = entry["title"]
-            link = entry["link"]
-            description = (
-                f"<p><strong>Author:</strong> {entry['author']}</p>"
-                f"<p><strong>Link:</strong> <a href=\"{entry['link']}\">{entry['link']}</a></p>"
-                f"<pre><code>{get_entry_diff(entry)}</code></pre>"
-            )
-
-            author = entry["author"]
-            guid = id
-            pubDate = convert_to_utc_time(entry["updated"])
-
-            item = create_feed_item(title, link, description, author, guid, pubDate)
-            items.append(item)
-
-        except Exception as e:
-            logger.error(f"Error generating RSS feed item: {str(e)}")
-
-    return items
-
-
-def create_feed(atom_feed):
+def create_feed(atom_feed: fastfeedparser.FastFeedParserDict):
     """
     Create an RSS feed from GitHub Atom Entries.
     """
-    items = create_feed_items(atom_feed)
 
-    feed = atom_feed["feed"]
+    src_feed = atom_feed["feed"]
 
-    feed = Feed(
-        title=f"GitHub Feed for {feed['title']}",
-        link=f"{feed['link']}",
-        description="Latest entries from GitHub repository",
-        language=feed["language"],
-        lastBuildDate=convert_to_utc_time(feed["updated"]),
-        items=items,
-    )
-
-    return feed.rss()
+    feed = FeedGenerator()
+    feed.language(src_feed["language"])
+    feed.title(src_feed["title"])
+    feed.link(href=src_feed["link"])
+    feed.description("gitcommits")
+    feed.generator("diff2rss")
+    src_entries = atom_feed["entries"]
+    for entry in src_entries:
+        feed_item = feed.add_entry()
+        try:
+            feed_item.title(entry["title"])
+            feed_item.link(href=entry["link"])
+            feed_item.description(
+                f"{entry['title']} by {entry['author']} on {entry['updated']}"
+            )
+            feed_item.author({"name": entry["author"]})
+            feed_item.pubDate(entry["updated"])
+            feed_item.content(
+                f"<p><strong>Author:</strong> {entry['author']}</p>"
+                f"<p><strong>Link:</strong> <a href=\"{entry['link']}\">{entry['link']}</a></p>"
+                f"<pre><code>{get_entry_diff(entry)}</code></pre>",
+                type="html"
+            )
+        except Exception as e:
+            logger.error(f"Error generating RSS feed item: {str(e)}")
+    return feed.rss_str(pretty=True)
