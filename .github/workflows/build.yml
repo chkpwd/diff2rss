@@ -1,3 +1,20 @@
+name: Build and publish
+
+on:
+  push:
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      push:
+        description: 'Push'
+        required: false
+        type: boolean
+        default: true
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: diff2rss
 jobs:
   build:
     runs-on: ubuntu-latest
