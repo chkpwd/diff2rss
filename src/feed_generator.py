@@ -35,8 +35,6 @@ def create_feed(atom_feed: fastfeedparser.FastFeedParserDict):
             feed_item.author({"name": entry["author"]})
             feed_item.pubDate(entry["updated"])
             feed_item.content(
-                f"<p><strong>Author:</strong> {entry['author']}</p>"
-                f"<p><strong>Link:</strong> <a href=\"{entry['link']}\">{entry['link']}</a></p>"
                 f"<pre><code>{get_entry_diff(entry)}</code></pre>",
                 type="html"
             )
