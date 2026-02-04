@@ -25,7 +25,7 @@ jobs:
       OUTPUT_ARTIFACT_NAME: image-archive
       OUTPUT_FILE: diff2rss-${{ github.ref_name }}.oci.tar
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: docker/setup-qemu-action@v3
       - uses: docker/setup-buildx-action@v3
 
@@ -85,7 +85,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Download build artifact
         if: startsWith(github.ref, 'refs/tags/')
